@@ -18,3 +18,11 @@ CREATE TABLE IF NOT EXISTS shoppingcart.PRODUCTS(
     status BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
+
+CREATE TABLE shoppingcart.WISHLIST(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES shoppingcart.USERS(id),
+    FOREIGN KEY (product_id) REFERENCES shoppingcart.PRODUCTS(id)
+);
