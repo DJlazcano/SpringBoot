@@ -1,0 +1,20 @@
+CREATE SCHEMA IF NOT EXISTSshoppingcartñ
+
+CREATE TABLE IF NOT EXISTS shoppingcart.USERS (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    area_of_interest VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS shoppingcart.PRODUCTS(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    price DECIMAL(10,2) NOT NULL,
+    image TEXT,
+    description VARCHAR(255),
+    total_products_inventory INT DEFAULT 0,
+    status BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
