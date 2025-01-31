@@ -3,9 +3,12 @@ package com.example.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.example.models.Product;
 import com.example.repositories.ProductRepository;
 
+@Service
 public class ProductService {
     private final ProductRepository productRepository;
 
@@ -14,7 +17,7 @@ public class ProductService {
     }
 
     public String insertProduct(Product product){
-        Optional<Product> existsProduct = productRepository.findByName(product.getProductName());
+        Optional<Product> existsProduct = Optional.ofNullable(productRepository.findByName(product.getProductName()));
         if(existsProduct.isPresent()){
             Product product1 = existsProduct.get();
             product1.setTotal_products_inventory(product1.getTotal_products_inventory() + 1);
@@ -58,7 +61,7 @@ public class ProductService {
         }
 
         public Optional<Product> getProductByName(String productName){
-            return productRepository.findByName(productName);
+            return Optional.ofNullable(productRepository.findByName(productName));
         }
 
         public List<Product> getProductsByPrice(float price){

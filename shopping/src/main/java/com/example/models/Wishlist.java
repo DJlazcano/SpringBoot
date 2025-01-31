@@ -1,5 +1,8 @@
 package com.example.models;
 
+import java.util.List;
+import java.util.Optional;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -10,22 +13,24 @@ import jakarta.persistence.Table;
 @Table(name="WISHLIST", schema="shoppingcart")
 public class Wishlist {
     @Id
-    private int id;
+    public int id;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable= false)
-    private User user;
+    private Optional<User> user;
 
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)
-    private Product product;
+    private List<Product> products;
 
     public Wishlist(){}
 
-    public Wishlist(User user, Product product){
+    public Wishlist(Optional<User> user, Product product){
         this.user = user;
-        this.product = product;
+        this.products.add(product);
     }
 
-
+    public void removeProduct(Product product){
+        this.products.remove(product);
+    }
 }

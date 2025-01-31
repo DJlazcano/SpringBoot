@@ -1,14 +1,15 @@
 package com.example.repositories;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.models.User;
 import com.example.models.Wishlist;
 
-public class WishlistRepository extends JpaRepository<Wishlist, Integer> {
-    List<Wishlist> findByUser(User user);
-    void deleteByUser(User user);
+@Repository
+public interface  WishlistRepository extends JpaRepository<Wishlist, Integer> {
+    Wishlist findByUser(Optional<User> user);
+    void deleteByUser(Optional<User> user);
 }
