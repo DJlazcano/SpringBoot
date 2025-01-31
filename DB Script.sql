@@ -26,3 +26,13 @@ CREATE TABLE shoppingcart.WISHLIST(
     FOREIGN KEY (user_id) REFERENCES shoppingcart.USERS(id),
     FOREIGN KEY (product_id) REFERENCES shoppingcart.PRODUCTS(id)
 );
+
+CREATE TABLE shoppingcart.ORDER_HISTORY(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES shoppingcart.USERS(id),
+    FOREIGN KEY (product_id) REFERENCES shoppingcart.PRODUCTS(id)
+);

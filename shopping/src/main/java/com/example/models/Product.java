@@ -1,13 +1,17 @@
 package com.example.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="PRODUCTS", schema="shoppingcart")
 public class Product {
+    
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String productName;
     private float price;
